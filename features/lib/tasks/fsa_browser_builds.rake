@@ -2,7 +2,7 @@ namespace :build do
   desc "Run all scenarios in a chrome browser"
   task :chrome do
       IO.popen("cucumber BROWSER=chrome", 'r+') do |pipe|
-        puts console_output = pipe.read
+        puts pipe.read
         pipe.close_write
       end
   end
@@ -10,7 +10,7 @@ namespace :build do
   desc "Run all scenarios in a firefox browser"
   task :firefox do
       IO.popen("cucumber BROWSER=firefox", 'r+') do |pipe|
-        puts console_output = pipe.read
+        puts pipe.read
         pipe.close_write
       end
   end
@@ -18,7 +18,7 @@ namespace :build do
   desc "Run all scenarios in a safari browser"
   task :safari do
       IO.popen("cucumber BROWSER=safari", 'r+') do |pipe|
-        puts console_output = pipe.read
+        puts pipe.read
         pipe.close_write
       end
   end
