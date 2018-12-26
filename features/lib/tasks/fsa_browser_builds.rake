@@ -23,11 +23,11 @@ namespace :build do
       end
   end
 
-  desc "Launch all browser builds"
+  desc "Launch all browser builds simultaneously"
   task :all do
     threads = []
-    %w{build:chrome build:firefox build:safari}.each do |cuke_tag|
-      threads << Thread.new(cuke_tag) do |thread|
+    %w{build:chrome build:firefox build:safari}.each do |build|
+      threads << Thread.new(build) do |thread|
         Rake::Task[thread].execute
       end
     end
