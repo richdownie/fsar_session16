@@ -24,7 +24,7 @@ namespace :build do
   end
 
   desc "Launch all browser builds"
-  task :all_browsers do
+  task :all do
     threads = []
     %w{build:chrome build:firefox build:safari}.each do |cuke_tag|
       threads << Thread.new(cuke_tag) do |thread|
