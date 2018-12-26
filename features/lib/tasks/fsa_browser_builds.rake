@@ -1,6 +1,3 @@
-require 'rubygems'
-require 'bundler'
-
 namespace :build do
   desc "Launch all cuke builds"
   task :all do
@@ -15,34 +12,28 @@ namespace :build do
 
   desc "Run cukes in a chrome browser"
   task :chrome do
-      Bundler.with_clean_env do
       console_output = ""
       IO.popen("cucumber BROWSER=chrome", 'r+') do |pipe|
         puts console_output = pipe.read
         pipe.close_write
       end
-    end
   end
 
   desc "Run cukes in a firefox browser"
   task :firefox do
-      Bundler.with_clean_env do
       console_output = ""
       IO.popen("cucumber BROWSER=firefox", 'r+') do |pipe|
         puts console_output = pipe.read
         pipe.close_write
       end
-    end
   end
 
   desc "Run cukes in a safari browser"
   task :safari do
-      Bundler.with_clean_env do
       console_output = ""
       IO.popen("cucumber BROWSER=safari", 'r+') do |pipe|
         puts console_output = pipe.read
         pipe.close_write
       end
-    end
   end
 end
