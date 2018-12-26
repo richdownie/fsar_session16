@@ -1,5 +1,5 @@
 namespace :build do
-  desc "Run cukes in a chrome browser"
+  desc "Run all scenarios in a chrome browser"
   task :chrome do
       console_output = ""
       IO.popen("cucumber BROWSER=chrome", 'r+') do |pipe|
@@ -8,7 +8,7 @@ namespace :build do
       end
   end
 
-  desc "Run cukes in a firefox browser"
+  desc "Run all scenarios in a firefox browser"
   task :firefox do
       console_output = ""
       IO.popen("cucumber BROWSER=firefox", 'r+') do |pipe|
@@ -17,7 +17,7 @@ namespace :build do
       end
   end
 
-  desc "Run cukes in a safari browser"
+  desc "Run all scenarios in a safari browser"
   task :safari do
       console_output = ""
       IO.popen("cucumber BROWSER=safari", 'r+') do |pipe|
@@ -26,7 +26,7 @@ namespace :build do
       end
   end
 
-  desc "Launch all cuke builds"
+  desc "Launch all browser builds"
   task :all do
     threads = []
     %w{build:chrome build:firefox build:safari}.each do |cuke_tag|
