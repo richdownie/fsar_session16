@@ -10,3 +10,7 @@ Before do
   end
   @domain = 'https://fullstackautomationwithruby.com'
 end
+
+After do
+  @browser.quit
+end
