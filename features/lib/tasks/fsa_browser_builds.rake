@@ -1,15 +1,4 @@
 namespace :build do
-  desc "Launch all cuke builds"
-  task :all do
-    threads = []
-    %w{build:chrome build:firefox build:safari}.each do |cuke_tag|
-      threads << Thread.new(cuke_tag) do |thread|
-        Rake::Task[thread].execute
-      end
-    end
-    threads.each { |thread| thread.join }
-  end
-
   desc "Run cukes in a chrome browser"
   task :chrome do
       console_output = ""
@@ -35,5 +24,16 @@ namespace :build do
         puts console_output = pipe.read
         pipe.close_write
       end
+  end
+
+  desc "Launch all cuke builds"
+  task :all do
+    threads = []
+    %w{build:chrome build:firefox build:safari}.each do |cuke_tag|
+      threads << Thread.new(cuke_tag) do |thread|
+        Rake::Task[thread].execute
+      end
+    end
+    threads.each { |thread| thread.join }
   end
 end
