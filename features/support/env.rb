@@ -1,16 +1,7 @@
 require 'selenium-webdriver'
-caps = Selenium::WebDriver::Remote::Capabilities.chrome(chromeOptions: { args: [ "--headless" ]})
-
-Before do
-  if ENV["BROWSER"]
-    @browser = Selenium::WebDriver.for ENV["BROWSER"].to_sym
-    puts @browser.inspect
-  else
-    @browser = Selenium::WebDriver.for :chrome, desired_capabilities: caps
-  end
-  @domain = 'https://fullstackautomationwithruby.com'
-end
-
-After do
-  @browser.quit
-end
+require 'webdrivers'
+require 'cucumber'
+require 'rspec'
+require 'pry'
+require 'httparty'
+require_relative '../page_objects/widgets_index_page'
